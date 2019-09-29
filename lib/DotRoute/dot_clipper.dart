@@ -1,9 +1,9 @@
-
+import 'dot.dart';
+import 'dot_hit_test.dart';
 import 'package:flutter/material.dart';
-import 'package:vector_math/vector_math.dart' as math_V;
-import 'dart:math';
 
 class DotClipper extends  CustomClipper<Path> {
+
   double animationValue;
   double dotSize;
   DotClipper({this.animationValue, this.dotSize = 24});
@@ -23,28 +23,13 @@ class DotClipper extends  CustomClipper<Path> {
         )
     );
 
-
     Path path = Path();
     dotList.forEach((dot){
-      if(dotHitTest(size: size, value: animationValue, dotRect: dot.rect))path.addRect(dot.rect);
+      if(DotHitTest.rotate(size: size, value: animationValue, dotRect: dot.rect))
+        path.addRect(dot.rect);
     });
+
     return path;
-  }
-
-  bool dotHitTest ({Size size, double value, Rect dotRect}) {
-
-    Offset center = size.center(Offset.zero);
-    double rad =  math_V.radians(- 90 + 180 * value);
-    double y =  tan(rad) * (dotRect.center.dx - center.dx)  + center.dy ;
-
-    if(center.dx > dotRect.center.dx) {
-      if( y <  dotRect.center.dy) return true;
-      else return false;
-    } else {
-      if( y >  dotRect.center.dy) return true;
-      else return false;
-
-    }
   }
 
   @override
@@ -53,15 +38,3 @@ class DotClipper extends  CustomClipper<Path> {
   }
 
 }
-
-class Dot {
-  double size;
-  int row;
-  int column;
-
-  Dot({this.size, this.column, this.row});
-
-  Rect get rect => Rect.fromLTWH(row * size, column * size, size, size);
-}
-
-
