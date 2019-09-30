@@ -1,7 +1,5 @@
 Flutterで90年代のゲーム風画面遷移を実装していきます
 
-![result](https://github.com/gentle-ohige/FlutterDotRouter/blob/samples/movies/sample.gif)
-
 <img src="https://github.com/gentle-ohige/FlutterDotRouter/blob/samples/movies/sample.gif" width="360">
 
 画面遷移実装について本家が一流の説明をしてくれるので省きます
