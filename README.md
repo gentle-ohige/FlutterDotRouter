@@ -12,6 +12,7 @@ Flutterで90年代のゲーム風画面遷移を実装していきます
 容易にカスタマイズできると思います。
 
 #1.Router
+
 MaterialPageRouterの構成を参考に
 Routeの継承を行います
 
@@ -64,6 +65,7 @@ class DotAnimationRoute<T> extends PageRoute<T> {
 
 
 #2.TransitionAnimatedWidget
+
 アニメーション遷移時にbuildTransitionsが繰り返し呼び出され、
 animationの値が更新されます。
 AnimatedWidgetを継承したクラスを作成します。
@@ -94,11 +96,11 @@ class DotAnimation extends AnimatedWidget {
 }
 ```
 
-
 childには遷移先の画面が入っており、
 ClipPathを利用してchildの描画箇所を制御します
 
 #3.SpliteScreen
+
 画面をDotに分割していきます。
 
 ```.dart
@@ -154,8 +156,8 @@ class DotClipper extends  CustomClipper<Path> {
 }
 ```
 
-
 #4.HitTest
+
 画面をxy図形に見立て、一次関数の式から描画を判別して行きます。
 重要な処理となります。
 
@@ -181,6 +183,7 @@ class DotHitTest{
 ```
 
 #5.最後に
+
 線形関数を用いて様々な遷移アニメーションをカスタマイズしましょう。
 https://github.com/gentle-ohige/FlutterDotRouter
 Mediumに英語版を投稿する予定です。(Gistは正義)
